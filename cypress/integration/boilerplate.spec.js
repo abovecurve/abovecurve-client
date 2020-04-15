@@ -3,7 +3,7 @@ context(`Test the boilerplate`, function() {
       cy.visit('/');
 
       cy.get('p')
-         .contains('Server is saying')
+         .contains('The API is saying')
          .should('exist');
    });
 });
