@@ -1,73 +1,34 @@
 {
-   "name": "react-starter",
-   "version": "0.1.0",
-   "private": true,
-   "engines": {
-      "node": ">=12.8.0",
-      "npm": ">=6.10.0"
-   },
-   "scripts": {
-      "build": "env CI='false' react-scripts build",
-      "build:prod": "env-cmd -e common,production npm run build",
-      "build:staging": "env-cmd -e common,staging npm run build",
-      "check:circular": "madge --circular ./src",
-      "check:deps": "depcheck ./",
-      "check:orphans": "madge --orphans ./src",
-      "cypress": "cypress run",
-      "cypress:circleci": "start-server-and-test start http://localhost:3000 cypress",
-      "cypress:open": "cypress open",
-      "deploy": "npm run build && npm run upload",
-      "deploy:prod": "env-cmd -e common,production npm run build:prod && npm run upload:prod",
-      "deploy:staging": "env-cmd -e common,staging npm run build:staging && npm run upload:staging",
-      "deps:clear": "rm -rf node_modules/",
-      "provision:basic": "env-cmd -e common node ./scripts/provision__basic",
-      "provision:basic_with_staging": "env-cmd -e common node ./scripts/provision__basic_with_staging",
-      "provision:custom_domain": "env-cmd -e common node ./scripts/provision__custom_domain",
-      "provision:custom_domain_with_staging": "env-cmd -e common node ./scripts/provision__custom_domain_with_staging",
-      "start": "react-scripts start",
-      "start:local": "env-cmd -e common,local npm start",
-      "start:prod": "env-cmd -e common,production npm start",
-      "start:staging": "env-cmd -e common,staging npm start",
-      "test": "react-scripts test",
-      "upload": "node ./scripts/upload_bucket",
-      "upload:staging": "env-cmd -e common,staging node ./scripts/upload_bucket",
-      "upload:prod": "env-cmd -e common,production node ./scripts/upload_bucket"
-   },
-   "dependencies": {
-      "@testing-library/jest-dom": "^4.2.4",
-      "@testing-library/react": "^9.3.2",
-      "axios": "^0.19.2",
-      "env-cmd": "^10.0.1",
-      "prop-types": "15.7.2",
-      "react": "16.11.0",
-      "react-dom": "16.11.0",
-      "react-router-dom": "5.1.2",
-      "react-scripts": "3.2.0",
-      "shelljs": "^0.8.3"
-   },
-   "devDependencies": {
-      "cypress": "3.5.0",
-      "depcheck": "^0.9.1",
-      "eslint": "6.6.0",
-      "eslint-plugin-cypress": "2.7.0",
-      "eslint-plugin-react": "7.16.0",
-      "madge": "3.5.0",
-      "prettier": "1.19.1",
-      "start-server-and-test": "1.10.6"
-   },
-   "eslintConfig": {
-      "extends": "react-app"
-   },
-   "browserslist": {
-      "production": [
-         ">0.2%",
-         "not dead",
-         "not op_mini all"
-      ],
-      "development": [
-         "last 1 chrome version",
-         "last 1 firefox version",
-         "last 1 safari version"
-      ]
-   }
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
