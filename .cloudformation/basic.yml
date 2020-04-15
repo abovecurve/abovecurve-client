@@ -31,9 +31,9 @@ Resources:
         Statement: # lets the public access/view the contents of your Bucket, i.e. web app
           - Sid: PublicReadForGetBucketObjects
             Effect: Allow
-            Principal: "*" # wildcard, allow all requests
-            Action: "s3:GetObject"
-            Resource: !Join ["", ["arn:aws:s3:::", !Ref MyBucket, /*]]
+            Principal: '*' # wildcard, allow all requests
+            Action: 's3:GetObject'
+            Resource: !Join ['', ['arn:aws:s3:::', !Ref MyBucket, /*]]
 
 Outputs:
   WebsiteURL:
