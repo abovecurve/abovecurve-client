@@ -20,7 +20,7 @@ class App extends Component {
       return (
          <div className="App">
             <header className="App-header">
-               <p>Server is saying:</p>
+               <p>{`This is deployed on the ${process.env.REACT_APP_ENV} envrionment. The API is saying:`}</p>
                <p>{this.state.data}</p>
             </header>
          </div>
