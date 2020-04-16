@@ -1,16 +1,33 @@
-import React from "react";
+import React, { Component } from "react";
+import axios from "../../utils/axios";
 import logo from "../assets/logo.svg";
 import "./app.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Welcome to Above Curve!</p>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    data: "",
+  };
+  componentDidMount = () => {
+    // custom axios uses env specific base path
+    // LOCAL_API="http://localhost:4000"
+    // REACT_APP_API_URL="http://api.abovecurve.com" (production)
+    // REACT_APP_API_URL="http://api.abovecurve.dev" (development)
+    axios.get(`/covid/statistics`).then((res) => {
+      const data = res.data;
+      this.setState({ data });
+    });
+  };
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>Welcome to Above Curve!</p>
+          {this.state.data}
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
