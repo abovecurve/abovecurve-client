@@ -23,7 +23,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>Welcome to Above Curve!</p>
-          {this.state.data}
+          {this.state.data.message}
         </header>
       </div>
     );
