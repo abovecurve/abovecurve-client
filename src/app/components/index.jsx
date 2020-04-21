@@ -12,7 +12,7 @@ class App extends Component {
     // LOCAL_API="http://localhost:4000"
     // REACT_APP_API_URL="http://api.abovecurve.com" (production)
     // REACT_APP_API_URL="http://api.abovecurve.dev" (development)
-    axios.get(`/covid/statistics`).then((res) => {
+    axios.get(`/ping`).then((res) => {
       const data = res.data;
       this.setState({ data });
     });
