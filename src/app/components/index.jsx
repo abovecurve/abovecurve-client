@@ -3,12 +3,14 @@ import axios from "../../utils/axios";
 import logo from "../assets/logo.svg";
 import "./app.css";
 
-import Landing from "../../landing/components/index";
+import Landing from "../../landing/components/";
+import Navbar from "../../navbar/components";
 
 class App extends Component {
   state = {
     data: "",
   };
+
   componentDidMount = () => {
     // custom axios uses env specific base path
     // LOCAL_API="http://localhost:4000"
@@ -22,13 +24,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>Welcome to Above Curve!</p>
-          {/* Below line proves that the client talks to the api */}
-          {/* Should output: Hello from the Above Curve API! */}
-          {this.state.data.message}
-        </header>
+          <p>Welcome to Above Curve!</p> */}
+        {/* Below line proves that the client talks to the api */}
+        {/* Should output: Hello from the Above Curve API! */}
+        {/* {this.state.data.message}
+        </header> */}
+        <Navbar />
         <Landing />
       </div>
     );

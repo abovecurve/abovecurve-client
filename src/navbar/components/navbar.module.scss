@@ -1,0 +1,9 @@
+@import "../../utils/styles/index.scss";
+
+.Navbar {
+  width: 100%;
+  height: 10vh;
+  box-shadow: 0 2px 12px 6px rgba($color: #000000, $alpha: 0.1);
+  position: relative;
+  padding: 24px;
+}
