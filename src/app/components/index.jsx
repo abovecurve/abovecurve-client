@@ -26,11 +26,8 @@ class App extends Component {
       this.setState({ data });
     });
 
-    // if (GATRACKING) {
-    console.log(GATRACKING, "GATRACKING Test for Dev");
     initGA(GATRACKING);
     PageView();
-    // }
   };
 
   render() {
@@ -42,6 +39,9 @@ class App extends Component {
           {/* Below line proves that the client talks to the api */}
           {/* Should output: Hello from the Above Curve API! */}
           {this.state.data.message}
+
+          {/* This is how to call a custom Google Analytics event */}
+          {/* This button sends a "TEST" event to GA when the button is clicked */}
           <button
             onClick={() => {
               Event(

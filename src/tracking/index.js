@@ -24,9 +24,8 @@ export const Event = (category, action, label) => {
 
 /**
  * OutboundLink - Track clicks that are not page links.
- * @param {string} category
- * @param {string} action
  * @param {string} label
+ * @param {string} to
  */
 export const OutboundLink = (label, to) => {
   ReactGA.OutboundLink({
