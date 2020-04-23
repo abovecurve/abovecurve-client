@@ -2,6 +2,20 @@
 
 .Landing {
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px;
+
+  .US_map {
+    width: 100%;
+    height: auto;
+
+    @include lg {
+      height: 613px;
+      width: auto;
+    }
+  }
 }
