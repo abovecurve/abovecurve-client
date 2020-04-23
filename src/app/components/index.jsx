@@ -3,10 +3,8 @@ import { PageView, initGA, Event } from "../../tracking";
 import axios from "../../utils/axios";
 import logo from "../assets/logo.svg";
 import "./app.css";
-const { GATRACKING } = process.env;
 
-// Init .env variables
-require("dotenv").config();
+const { REACT_APP_GATRACKING: GATRACKING } = process.env;
 
 /* 
   When using React Router see this guide for
@@ -29,6 +27,7 @@ class App extends Component {
     });
 
     // if (GATRACKING) {
+    console.log(GATRACKING, "GATRACKING Test for Dev");
     initGA(GATRACKING);
     PageView();
     // }
