@@ -1,7 +1,18 @@
 import React, { Component } from "react";
+import { PageView, initGA, Event } from "../../tracking";
 import axios from "../../utils/axios";
 import logo from "../assets/logo.svg";
 import "./app.css";
+const { GATRACKING } = process.env;
+
+// Init .env variables
+require("dotenv").config();
+
+/* 
+  When using React Router see this guide for
+  impmelemting Google Analytics
+  https://github.com/react-ga/react-ga/wiki/React-Router-v4-withTracker
+*/
 
 class App extends Component {
   state = {
@@ -16,7 +27,13 @@ class App extends Component {
       const data = res.data;
       this.setState({ data });
     });
+
+    // if (GATRACKING) {
+    initGA(GATRACKING);
+    PageView();
+    // }
   };
+
   render() {
     return (
       <div className="App">
@@ -26,6 +43,18 @@ class App extends Component {
           {/* Below line proves that the client talks to the api */}
           {/* Should output: Hello from the Above Curve API! */}
           {this.state.data.message}
+          <button
+            onClick={() => {
+              Event(
+                "TEST",
+                "Someone clicked on the Google Analytics test button.",
+                "LANDING_PAGE"
+              );
+              console.log("clicked!");
+            }}
+          >
+            Test Google Analytics event tracking.
+          </button>
         </header>
       </div>
     );
