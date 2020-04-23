@@ -3,6 +3,8 @@ import axios from "../../utils/axios";
 import logo from "../assets/logo.svg";
 import "./app.css";
 
+import Landing from "../../landing/components/index";
+
 class App extends Component {
   state = {
     data: "",
@@ -27,6 +29,7 @@ class App extends Component {
           {/* Should output: Hello from the Above Curve API! */}
           {this.state.data.message}
         </header>
+        <Landing />
       </div>
     );
   }
