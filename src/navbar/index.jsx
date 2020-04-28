@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./navbar.module.scss";
-import logo_512 from "../assets/ac_logo_512.png";
+import logo_512 from "./assets/ac_logo_512.png";
 
 const Navbar = (props) => {
   return (

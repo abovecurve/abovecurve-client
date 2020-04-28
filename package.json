@@ -1,8 +1,8 @@
 {
-  "name": "client",
+  "name": "abovecurve-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://api.abovecurve.com",
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -10,8 +10,13 @@
     "axios": "^0.19.2",
     "cross-env": "^7.0.2",
     "node-sass": "^4.13.1",
+    "dotenv": "^8.2.0",
+    "particles-bg": "^2.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-ga": "^2.7.0",
+    "react-particles-js": "^2.4.0",
+    "react-router": "^5.1.2",
     "react-scripts": "3.4.1"
   },
   "scripts": {
