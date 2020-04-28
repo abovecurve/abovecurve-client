@@ -7,7 +7,7 @@ import App from "./app";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import ReduxThunk from "redux-thunk";
-import reducer from "./reducers";
+import { reducer } from "./reducers";
 
 //creates enhancer for redux store
 const composeEnhancers =
@@ -24,11 +24,11 @@ const enhancer = composeEnhancers(applyMiddleware(ReduxThunk));
 const store = createStore(reducer, enhancer);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
       <App />
-    </React.StrictMode>
-  </Provider>,
+    </Provider>
+  </React.StrictMode>,
 
   document.getElementById("root")
 );
