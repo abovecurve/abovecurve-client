@@ -6,7 +6,7 @@ const Navbar = (props) => {
   return (
     <div className={styles.Navbar}>
       <img src={logo_512} alt="Above Curve" />
-      <div className={styles.menuButton}>
+      <div className={styles.menuButton} aria-label="Menu">
         <div className={styles.line} />
         <div className={styles.line} />
         <div className={styles.line} />

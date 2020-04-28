@@ -8,7 +8,7 @@ const Landing = (props) => {
     <div className={styles.Landing}>
       <img
         src={USMap}
-        alt="Map of the United States"
+        alt="Map of the United States "
         className={styles.US_map}
       />
     </div>

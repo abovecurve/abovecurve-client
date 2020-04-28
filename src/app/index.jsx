@@ -4,6 +4,9 @@ import { fetchData } from "../utils/axios";
 import logo from "./assets/logo.svg";
 import "./app.css";
 
+import { connect } from "react-redux";
+import { actionsTest } from "../actions";
+
 import Map from "../map";
 import Navbar from "../navbar";
 
@@ -47,8 +50,7 @@ class App extends Component {
           <p>Welcome to Above Curve!</p>
           {/* Below line proves that the client talks to the api */}
           {/* Should output: Hello from the Above Curve API! */}
-          {this.state.data.message}
-
+          {/* {this.state.data.message} */}
           {/* This is how to call a custom Google Analytics event */}
           {/* This button sends a "TEST" event to GA when the button is clicked */}
           <button
@@ -63,6 +65,16 @@ class App extends Component {
           >
             Test Google Analytics event tracking.
           </button>
+          {/* This button send a "TEST" event to react-redux chain and triggers a change in state */}
+          <button
+            onClick={() => {
+              return this.props.dispatchTest();
+            }}
+          >
+            {!this.props.testPassed
+              ? "React-redux test has not passed"
+              : "React-redux test has passed"}
+          </button>
         </header>
         <Navbar />
         <Map />
@@ -71,4 +83,18 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    testPassed: state.testPassed,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatchTest: () => {
+      return dispatch(actionsTest());
+    },
+  };
+};
+
+export default App = connect(mapStateToProps, mapDispatchToProps)(App);
