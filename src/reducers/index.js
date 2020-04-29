@@ -1,3 +1,10 @@
+// import { combineReducer } from "react-redux";
+// import successReducer from "./successReducer";
+
+// export default combineReducer({
+//   successReducer,
+// });
+
 import { TEST } from "../actions";
 
 export const initialState = {
