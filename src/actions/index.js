@@ -5,7 +5,7 @@ export const types = {
 
 export const actionsTest = () => (dispatch) => {
   return dispatch({
-    type: TEST,
+    type: types.TEST,
     payload: true,
   });
 };

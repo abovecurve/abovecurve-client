@@ -1,15 +1,25 @@
 import React from "react";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { initialState, reducer } from "../../reducers";
-import { render } from "@testing-library/react";
+import { initialState as reducerInitialState, reducer } from "../../reducers";
+import { render as rtlRender } from "@testing-library/react";
+import { enhancer } from "../createStore";
 
-export const renderWithRedux = (
+function render(
   component,
-  { initialState, store = createStore(reducer, initialState) } = {}
-) => {
-  return {
-    ...render(<Provider store={store}>{component}</Provider>),
-    store,
-  };
-};
+  {
+    initialState = reducerInitialState,
+    store = createStore(reducer, initialState, enhancer),
+    ...renderOptions
+  } = {}
+) {
+  function Wrapper({ children }) {
+    return <Provider store={store}>{children}</Provider>;
+  }
+
+  return rtlRender(component, { wrapper: Wrapper, ...renderOptions });
+}
+
+export * from "@testing-library/react";
+
+export { render };

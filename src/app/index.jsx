@@ -70,6 +70,7 @@ class App extends Component {
             onClick={() => {
               return this.props.dispatchTest();
             }}
+            data-testid="redux-button"
           >
             {!this.props.testPassed
               ? "React-redux test has not passed"
