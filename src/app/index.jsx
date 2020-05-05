@@ -9,7 +9,6 @@ import { actionsTest } from "../actions";
 
 import Map from "../map";
 import Navbar from "../navbar";
-import MapMenu from "../mapMenu";
 
 // NOTE: "UA-164204874-2" Is the tracking ID for Above Curve lcoalhost
 // open this app in incognito for it to register in the GA dashboard
@@ -80,7 +79,6 @@ class App extends Component {
         </header>
         <Navbar />
         <Map />
-        <MapMenu />
       </div>
     );
   }
