@@ -10,6 +10,6 @@ describe("Reducer", () => {
   it("should return new state if receiving type", () => {
     const newState = reducer(undefined, { type: types.TEST, payload: true });
 
-    expect(newState).toEqual({ testPassed: true });
+    expect(newState).toEqual({ ...initialState, testPassed: true });
   });
 });

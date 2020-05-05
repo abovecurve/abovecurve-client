@@ -5,6 +5,15 @@ import { initialState as reducerInitialState, reducer } from "../../reducers";
 import { render as rtlRender } from "@testing-library/react";
 import { enhancer } from "../createStore";
 
+export const testStore = (initialState = reducerInitialState) => {
+  const createStoreWithMiddleware = createStore(
+    reducer,
+    initialState,
+    enhancer
+  );
+  return createStoreWithMiddleware;
+};
+
 function render(
   component,
   {
