@@ -1,11 +1,11 @@
 @import "../utils/styles/index.scss";
 
-.Landing {
+.Map {
   width: 100vw;
   height: 90vh;
   background-color: white;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding: 12px;
   position: relative;
@@ -15,8 +15,16 @@
     height: auto;
 
     @include lg {
-      height: 613px;
+      height: 100%;
       width: auto;
+    }
+
+    path {
+      &:not(#frame) {
+        &:hover {
+          fill: rgba($color: $goldleaf, $alpha: 0.5);
+        }
+      }
     }
   }
 }

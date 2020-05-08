@@ -1,17 +1,12 @@
 import React from "react";
 import styles from "./map.module.scss";
-
-import USMap from "./assets/Blank_US_Map.png";
+import { ReactComponent as USMapSVG } from "./assets/US_map-01.svg";
 import MapMenu from "../mapMenu";
 
 const Map = (props) => {
   return (
-    <div className={styles.Landing}>
-      <img
-        src={USMap}
-        alt="Map of the United States "
-        className={styles.US_map}
-      />
+    <div className={styles.Map}>
+      <USMapSVG className={styles.US_map} data-testid="USMapSVG" />
       <MapMenu />
     </div>
   );
