@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../index";
-import { render, cleanup, fireEvent } from "../../utils/test-utils";
+import { render, cleanup, fireEvent } from "utils/test-utils";
 
 const setUp = (props = {}) => {
   const component = render(<Navbar {...props} />);

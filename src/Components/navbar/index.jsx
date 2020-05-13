@@ -3,7 +3,7 @@ import styles from "./navbar.module.scss";
 import logo_512 from "./assets/ac_logo_512.png";
 
 import { connect } from "react-redux";
-import { actionsToggleMenu } from "../actions";
+import { actionsToggleMenu } from "Actions";
 import PropTypes from "prop-types";
 
 let Navbar = (props) => {

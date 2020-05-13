@@ -1,3 +1,19 @@
+# AboveCurve
+
+## jsconfig.json
+
+This app makes use of a jsconfig.json file to create absolute paths. It is suggested that you import sibling files or files down the directory tree as you normally would, starting with a "./", however you may take advantage of absolute paths that originate from `src/`.
+
+i.e. if you would like to import the Map component from the index file found in `src/components/map` you can use `import Map from 'components/map';`
+
+All top level directories are written in PascalCase to help differential imports from npm packages and source code.
+
+If you are a VS Code user, you should not have to make any changes and absolute paths will work correctly.
+
+If you are a WebStorm or IntelliJ user, please mark the src directory as your Resources Root, which can be done through you're IDE. More information can be [found in this article](https://https://medium.com/hackernoon/absolute-imports-with-create-react-app-4c6cfb66c35d) by David Gilbertson
+
+# CRA Information
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

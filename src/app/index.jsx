@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { PageView, initGA, Event } from "../tracking";
-import { fetchData } from "../utils/axios";
+import { PageView, initGA, Event } from "Tracking";
+import { fetchData } from "Utils/axios";
 import "./app.css";
 
 import { connect } from "react-redux";
-import { actionsTest } from "../actions";
+import { actionsTest } from "Actions";
 
-import Chart from "../chart";
-import Navbar from "../navbar";
+import Chart from "Components/chart";
+import Navbar from "Components/navbar";
 
 // NOTE: "UA-164204874-2" Is the tracking ID for Above Curve lcoalhost
 // open this app in incognito for it to register in the GA dashboard

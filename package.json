@@ -46,5 +46,10 @@
   },
   "devDependencies": {
     "moxios": "^0.4.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "src(.*)$": "<rootDir>/src$1"
+    }
   }
 }

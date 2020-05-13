@@ -1,7 +1,7 @@
 import React from "react";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { initialState as reducerInitialState, reducer } from "../../reducers";
+import { initialState as reducerInitialState, reducer } from "Reducers";
 import { render as rtlRender } from "@testing-library/react";
 import { enhancer } from "../createStore";
 
