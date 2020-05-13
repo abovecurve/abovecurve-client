@@ -18,7 +18,6 @@ describe("Map Component", () => {
 
   it("should render a map of the United State", () => {
     const map = component.getAllByTestId("USMapSVG");
-
     expect(map.length).toBe(1);
   });
 });
