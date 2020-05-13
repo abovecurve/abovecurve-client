@@ -15,25 +15,14 @@ describe("App component", () => {
 
   afterEach(cleanup);
 
-  it("should render welcome text", () => {
-    const welcomeElement = component.getByText(/Welcome to Above Curve!/i);
-    expect(welcomeElement).toBeInTheDocument();
+  it("should render the navbar component", () => {
+    const navbar = component.getByTestId("navbar");
+
+    expect(navbar).toBeTruthy();
   });
 
-  describe("React-redux", () => {
-    it("should render a redux test button", () => {
-      const reduxButton = component.getByText(
-        /React-redux test has not passed/
-      );
-      expect(reduxButton).toBeInTheDocument();
-    });
-
-    it("should rerender the button when clicked", () => {
-      const reduxButton = component.getByText(
-        /React-redux test has not passed/
-      );
-      fireEvent.click(reduxButton);
-      expect(reduxButton).toHaveTextContent("React-redux test has passed");
-    });
+  it("should render the chart component", () => {
+    const chart = component.getByTestId("chart");
+    expect(chart).toBeTruthy();
   });
 });

@@ -1,7 +1,6 @@
 import React from "react";
 import Map from "../index";
 import { render, cleanup, fireEvent } from "../../utils/test-utils";
-import { isExportDeclaration } from "typescript";
 
 const setUp = (props = {}) => {
   const component = render(<Map {...props} />);

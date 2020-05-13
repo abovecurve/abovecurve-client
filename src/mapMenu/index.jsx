@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./mapMenu.module.scss";
+import { PropTypes } from "prop-types";
 
 import { connect } from "react-redux";
 
@@ -15,14 +16,14 @@ let MapMenu = (props) => {
   );
 };
 
+MapMenu.propTypes = {
+  datasets: PropTypes.array,
+};
+
 const mapStateToProps = (state) => {
   return {
     menuOpen: state.menuOpen,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default MapMenu = connect(mapStateToProps, mapDispatchToProps)(MapMenu);
+export default MapMenu = connect(mapStateToProps, null)(MapMenu);

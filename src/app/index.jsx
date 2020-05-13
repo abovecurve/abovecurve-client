@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { PageView, initGA, Event } from "../tracking";
 import { fetchData } from "../utils/axios";
-import logo from "./assets/logo.svg";
 import "./app.css";
 
 import { connect } from "react-redux";
 import { actionsTest } from "../actions";
 
-import Map from "../map";
+import Chart from "../chart";
 import Navbar from "../navbar";
 
 // NOTE: "UA-164204874-2" Is the tracking ID for Above Curve lcoalhost
@@ -45,40 +44,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Welcome to Above Curve!</p>
-          {/* Below line proves that the client talks to the api */}
-          {/* Should output: Hello from the Above Curve API! */}
-          {/* {this.state.data.message} */}
-          {/* This is how to call a custom Google Analytics event */}
-          {/* This button sends a "TEST" event to GA when the button is clicked */}
-          <button
-            onClick={() => {
-              Event(
-                "TEST",
-                "Someone clicked on the Google Analytics test button.",
-                "LANDING_PAGE"
-              );
-              console.log("clicked!");
-            }}
-          >
-            Test Google Analytics event tracking.
-          </button>
-          {/* This button send a "TEST" event to react-redux chain and triggers a change in state */}
-          <button
-            onClick={() => {
-              return this.props.dispatchTest();
-            }}
-            data-testid="redux-button"
-          >
-            {!this.props.testPassed
-              ? "React-redux test has not passed"
-              : "React-redux test has passed"}
-          </button>
-        </header>
         <Navbar />
-        <Map />
+        <Chart />
       </div>
     );
   }

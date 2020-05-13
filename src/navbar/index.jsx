@@ -12,7 +12,7 @@ let Navbar = (props) => {
   };
 
   return (
-    <div className={styles.Navbar}>
+    <nav className={styles.Navbar} data-testid="navbar">
       <img src={logo_512} alt="Above Curve" data-testid="ac-logo" />
       <div
         className={styles.menuButton}
@@ -24,7 +24,7 @@ let Navbar = (props) => {
         <div className={styles.line} />
         <div className={styles.line} />
       </div>
-    </div>
+    </nav>
   );
 };
 
