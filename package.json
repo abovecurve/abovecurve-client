@@ -57,6 +57,10 @@
       "^Tracking(.*)$": "<rootDir>/src/Tracking$1",
       "^Utils(.*)$": "<rootDir>/src/Utils$1",
       "src(.*)$": "<rootDir>/src$1"
-    }
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ]
   }
 }
