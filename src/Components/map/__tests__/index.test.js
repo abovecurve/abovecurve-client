@@ -1,6 +1,6 @@
 import React from "react";
 import Map from "../index";
-import { render, cleanup, fireEvent, screen } from "utils/test-utils";
+import { render, cleanup, fireEvent, screen } from "Utils/test-utils";
 
 const setUp = (props = {}) => {
   const component = render(<Map {...props} />);
