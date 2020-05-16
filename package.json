@@ -60,7 +60,11 @@
     },
     "moduleFileExtensions": [
       "js",
-      "json"
+      "json",
+      "jsx",
+      "ts",
+      "tsx",
+      "node"
     ]
   }
 }
