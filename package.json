@@ -45,7 +45,8 @@
     ]
   },
   "devDependencies": {
-    "moxios": "^0.4.0"
+    "moxios": "^0.4.0",
+    "react-app-rewired": "^2.1.6"
   },
   "jest": {
     "moduleNameMapper": {
