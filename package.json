@@ -50,6 +50,11 @@
   },
   "jest": {
     "moduleNameMapper": {
+      "^Actions(.*)$": "<rootDir>/src/Actions$1",
+      "^Components(.*)$": "<rootDir>/src/Components$1",
+      "^Reducers(.*)$": "<rootDir>/src/Reducers$1",
+      "^Tracking(.*)$": "<rootDir>/src/Tracking$1",
+      "^Utils(.*)$": "<rootDir>/src/Utils$1",
       "src(.*)$": "<rootDir>/src$1"
     }
   }
