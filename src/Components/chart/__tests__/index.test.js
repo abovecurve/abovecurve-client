@@ -1,6 +1,6 @@
 import React from "react";
 import Chart from "../index";
-import { render, cleanup } from "Utils/test-utils";
+import { render, cleanup } from "../../../utils/test-utils";
 
 const setUp = (props = {}) => {
   const component = render(<Chart {...props} />);

@@ -1,4 +1,4 @@
-import { types } from "Actions";
+import { types } from "../../actions";
 import { reducer, initialState } from "../index";
 
 describe("Reducer", () => {

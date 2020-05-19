@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-app-rewired test",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -46,25 +46,6 @@
     ]
   },
   "devDependencies": {
-    "moxios": "^0.4.0",
-    "react-app-rewired": "^2.1.6"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "^Actions(.*)$": "<rootDir>/src/Actions$1",
-      "^Components(.*)$": "<rootDir>/src/Components$1",
-      "^Reducers(.*)$": "<rootDir>/src/Reducers$1",
-      "^Tracking(.*)$": "<rootDir>/src/Tracking$1",
-      "^Utils(.*)$": "<rootDir>/src/Utils$1",
-      "src(.*)$": "<rootDir>/src$1"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "jsx",
-      "ts",
-      "tsx",
-      "node"
-    ]
+    "moxios": "^0.4.0"
   }
 }

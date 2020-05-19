@@ -1,4 +1,4 @@
-import { types } from "Actions";
+import { types } from "../actions";
 
 export const initialState = {
   testPassed: false,

@@ -1,6 +1,6 @@
 import React from "react";
 import DataOptions from "../index";
-import { render, fireEvent, cleanup } from "Utils/test-utils";
+import { render, fireEvent, cleanup } from "../../../utils/test-utils";
 
 const setUp = (props = {}) => {
   const component = render(<DataOptions {...props} />);

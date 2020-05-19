@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import { reducer } from "Reducers";
+import { reducer } from "../reducers";
 import ReduxThunk from "redux-thunk";
 
 //creates enhancer for redux store

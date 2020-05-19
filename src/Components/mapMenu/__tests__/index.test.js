@@ -1,6 +1,6 @@
 import React from "react";
 import MapMenu from "../index";
-import { render, testStore, cleanup } from "Utils/test-utils";
+import { render, testStore, cleanup } from "../../../utils/test-utils";
 
 describe("MapMenu Component", () => {
   afterEach(cleanup);
