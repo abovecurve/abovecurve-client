@@ -1,5 +1,5 @@
 import React from "react";
-import MapMenu from "../index";
+import MapMenu from "../index.jsx";
 import { render, testStore, cleanup } from "../../../utils/test-utils";
 
 describe("MapMenu Component", () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import Map from "../index";
+import Map from "../index.jsx";
 import { render, cleanup, fireEvent, screen } from "../../../utils/test-utils";
 
 const setUp = (props = {}) => {

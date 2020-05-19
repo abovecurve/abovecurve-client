@@ -1,5 +1,5 @@
 import React from "react";
-import App from "../index";
+import App from "../index.jsx";
 import { render, fireEvent, cleanup } from "../../utils/test-utils";
 
 const setUp = (props = {}) => {
