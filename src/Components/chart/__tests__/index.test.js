@@ -1,5 +1,5 @@
 import React from "react";
-import Chart from "../index.js";
+import Chart from "../index";
 import { render, cleanup } from "../../../utils/test-utils";
 
 const setUp = (props = {}) => {
