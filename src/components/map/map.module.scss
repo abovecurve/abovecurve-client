@@ -1,0 +1,30 @@
+@import "../../utils/styles/index.scss";
+
+.Map {
+  width: inherit;
+  height: inherit;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  position: relative;
+
+  .US_map {
+    width: 100%;
+    height: auto;
+
+    @include lg {
+      height: 100%;
+      width: auto;
+    }
+
+    path {
+      &:not(#frame) {
+        &:hover {
+          fill: rgba($color: $goldleaf, $alpha: 0.5);
+        }
+      }
+    }
+  }
+}

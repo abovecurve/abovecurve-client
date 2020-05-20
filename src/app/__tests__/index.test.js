@@ -1,11 +1,28 @@
 import React from "react";
-import { render } from "@testing-library/react";
 import App from "../index";
+import { render, fireEvent, cleanup } from "../../utils/test-utils";
+
+const setUp = (props = {}) => {
+  const component = render(<App {...props} />);
+  return component;
+};
 
 describe("App component", () => {
-  it("should render welcome text", () => {
-    const { getByText } = render(<App />);
-    const welcomeElement = getByText(/Welcome to Above Curve!/i);
-    expect(welcomeElement).toBeInTheDocument();
+  let component;
+  beforeEach(() => {
+    component = setUp();
+  });
+
+  afterEach(cleanup);
+
+  it("should render the navbar component", () => {
+    const navbar = component.getByTestId("navbar");
+
+    expect(navbar).toBeTruthy();
+  });
+
+  it("should render the chart component", () => {
+    const chart = component.getByTestId("chart");
+    expect(chart).toBeTruthy();
   });
 });

@@ -1,0 +1,41 @@
+@import "../../utils/styles/index.scss";
+
+.Navbar {
+  width: 100vw;
+  height: 10vh;
+  box-shadow: 0 2px 12px 6px rgba($color: #000000, $alpha: 0.1);
+  position: relative;
+  padding: 24px 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+
+  .menuButton {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 6px;
+    padding: 12px;
+
+    .line {
+      width: 100%;
+      height: 4px;
+      border-radius: 6px;
+      background-color: $prussianblue;
+    }
+
+    &:hover {
+      background-color: rgba($color: #000000, $alpha: 0.1);
+      cursor: pointer;
+    }
+  }
+}
