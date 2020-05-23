@@ -1,6 +1,7 @@
 import React from "react";
 import MapMenu from "../index";
 import { render, testStore, cleanup } from "../../../utils/test-utils";
+import mapMenu from "../index";
 
 describe("MapMenu Component", () => {
   afterEach(cleanup);
@@ -15,5 +16,16 @@ describe("MapMenu Component", () => {
   it("should render if menuOpen is true", () => {
     const component = render(<MapMenu />, { initialState: { menuOpen: true } });
     expect(component.getAllByTestId("MapMenu").length).toBe(1);
+  });
+
+  it("should render a list of datasets", () => {
+    const component = render(<MapMenu />, {
+      initialState: {
+        menuOpen: true,
+        selectedDatasets: ["Number one", "Number two", "Number three"],
+      },
+    });
+
+    expect(component.getAllByText(/Number/i).length).toBe(3);
   });
 });
