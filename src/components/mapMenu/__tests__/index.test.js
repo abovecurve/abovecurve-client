@@ -22,7 +22,7 @@ describe("MapMenu Component", () => {
     const component = render(<MapMenu />, {
       initialState: {
         menuOpen: true,
-        selectedDatasets: ["Number one", "Number two", "Number three"],
+        allDatasets: ["Number one", "Number two", "Number three"],
       },
     });
 

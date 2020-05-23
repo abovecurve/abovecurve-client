@@ -13,8 +13,8 @@ let MapMenu = (props) => {
     <div className={styles.MapMenu} data-testid="MapMenu">
       <h2>DATASETS</h2>
       <form className={styles.datasets_form}>
-        {props.selectedDatasets &&
-          props.selectedDatasets.map((ph, index) => {
+        {props.allDatasets &&
+          props.allDatasets.map((ph, index) => {
             return (
               <label className={styles.datasets_label} key={index}>
                 <input type="checkbox" name={index + "_" + ph} id={index} />
@@ -35,7 +35,7 @@ MapMenu.propTypes = {
 const mapStateToProps = (state) => {
   return {
     menuOpen: state.menuOpen,
-    selectedDatasets: state.selectedDatasets,
+    allDatasets: state.allDatasets,
   };
 };
 
