@@ -2,7 +2,7 @@ import { types } from "../actions";
 
 export const initialState = {
   testPassed: false,
-  menuOpen: true,
+  menuOpen: false,
   allDatasets: ["Number of cases", "Number of Deaths", "Number of Recovered"],
 };
 
