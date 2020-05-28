@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { PageView, initGA, Event } from "../tracking";
 import { fetchData } from "../utils/axios";
+import DeathBySexState from "./visualization/DeathBySexState"
+import BarChart from "./visualization/BarChart";
 import logo from "./assets/logo.svg";
 import "./app.css";
+import MapChart from './visualization/MapChart';
+
 
 // NOTE: "UA-164204874-2" Is the tracking ID for Above Curve lcoalhost
 // open this app in incognito for it to register in the GA dashboard
@@ -38,30 +42,35 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Welcome to Above Curve!</p>
-          {/* Below line proves that the client talks to the api */}
-          {/* Should output: Hello from the Above Curve API! */}
-          {this.state.data.message}
+      <>
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <p>Welcome to Above Curve!</p>
+            {/* Below line proves that the client talks to the api */}
+            {/* Should output: Hello from the Above Curve API! */}
+            {this.state.data.message}
 
-          {/* This is how to call a custom Google Analytics event */}
-          {/* This button sends a "TEST" event to GA when the button is clicked */}
-          <button
-            onClick={() => {
-              Event(
-                "TEST",
-                "Someone clicked on the Google Analytics test button.",
-                "LANDING_PAGE"
-              );
-              console.log("clicked!");
-            }}
-          >
-            Test Google Analytics event tracking.
-          </button>
-        </header>
-      </div>
+            {/* This is how to call a custom Google Analytics event */}
+            {/* This button sends a "TEST" event to GA when the button is clicked */}
+            <button
+              onClick={() => {
+                Event(
+                  "TEST",
+                  "Someone clicked on the Google Analytics test button.",
+                  "LANDING_PAGE"
+                );
+                console.log("clicked!");
+              }}
+            >
+              Test Google Analytics event tracking.
+            </button>
+          </header>
+        </div>
+        {/* <BarChart data={[5,10,undefined,1,3]} size={[500,500]} /> */}
+        <DeathBySexState/>
+        <MapChart />
+    </>
     );
   }
 }
