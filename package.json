@@ -2,8 +2,8 @@
   "name": "abovecurve-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:4000",
   "dependencies": {
+    "@material-ui/core": "^4.10.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -17,6 +17,7 @@
     "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.1",
     "react-ga": "^2.7.0",
+    "react-google-charts": "^3.0.15",
     "react-particles-js": "^2.4.0",
     "react-router": "^5.1.2",
     "react-scripts": "3.4.1",

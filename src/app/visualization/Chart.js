@@ -13,7 +13,7 @@ class Chart extends React.Component {
     }
    
     render() {
-      return (<Bar ref={this.chartReference} data={this.props.data} />)
+      return (<Bar ref={this.chartReference} data={this.props.data} options={this.props.options} />)
     }
   }
 
