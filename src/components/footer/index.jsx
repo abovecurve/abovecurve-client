@@ -28,7 +28,7 @@ export default function Footer() {
   return (
     <BottomNavigation position="sticky" value={value} onChange={handleChange} className={classes.root} showLabels>
       {/* change href to be a relative link */}
-      <BottomNavigationAction target="_blank" rel="noopener" href="https://www.abovecurve.com/" alt="Above Curve Homepage" icon={<img src={logo} alt="Above Curve"></img>}>
+      <BottomNavigationAction target="_blank" rel="noopener" href="https://www.abovecurve.com/" alt="Above Curve Homepage" icon={<img src={logo} alt="Above Curve" data-testid="ac-logo"></img>}>
       </BottomNavigationAction>
     </BottomNavigation>
   );
