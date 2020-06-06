@@ -6,6 +6,11 @@ import BarChart from "./visualization/BarChart";
 import "./app.css";
 import GeoChart from './visualization/GeoChart';
 import ChartWrapper from './visualization/ChartWrapper';
+import ObesityChart from './visualization/ObesityChart';
+import axios from "axios";
+import Grid from "@material-ui/core/Grid";
+import DeathByAgeGroup from './visualization/DeathByAgeGroup';
+
 
 
 // NOTE: "UA-164204874-2" Is the tracking ID for Above Curve lcoalhost
@@ -22,54 +27,133 @@ const GATRACKING = process.env.REACT_APP_GATRACKING || "UA-164204874-2";
 class App extends Component {
   state = {
     data: {},
+    selectedObesityState: "",
+    obesityData: this.getSkeletonChartData(),
+    singleStateData: this.getSkeletonChartData(),
+    allObesityData: {},
+
+    selectedSmokingState: "",
+    smokingData: this.getSkeletonPieData(),
+    singleSmokingStateData: this.getSkeletonPieData(),
+    allSmokingData: {},
   };
 
-  componentDidMount = async () => {
-    // custom axios uses env specific base path
-    // LOCAL_API="http://localhost:4000"
-    // REACT_APP_API_URL="http://api.abovecurve.com" (production)
-    // REACT_APP_API_URL="http://api.abovecurve.dev" (development)
+  selectObesityState = (state) => {
+    const selectedState = this.state.allObesityData[state];
+    const singleStateData = this.getSkeletonChartData();
+    console.log(state)
+    singleStateData.labels.push(selectedState.stateName)
+    singleStateData.datasets[0].data.push(selectedState.percentage)
 
-    // Call the custom axios using the below example
-    const { data } = await fetchData("/ping");
-    this.setState({ data });
+    this.setState ({ selectedObesityState: state , singleStateData: singleStateData}) 
 
-    // Google Analytics initialization
-    initGA(GATRACKING);
-    // Trigger a Google Analytics Page View for this page (app.js)
-    PageView();
-  };
+  }
 
+  getSkeletonChartData() {
+    return {
+      labels: [],
+      datasets: [
+        {
+          label: "Total Obesity Percentage",
+          data: [],
+          backgroundColor: "rgba(54, 162, 235, 0.4)",
+        },
+      ],
+    };
+  }
+
+  selectSmokingState = (state) => {
+    const selectedState = this.state.allSmokingData[state];
+    const singleSmokingStateData = this.getSkeletonPieData();
+    // console.log(state)
+    singleSmokingStateData.labels.push(selectedState.stateName)
+    singleSmokingStateData.datasets[0].data.push(selectedState.percentage)
+
+    this.setState ({ selectedSmokingState: state , singleSmokingStateData: singleSmokingStateData}) 
+  }
+
+  getSkeletonPieData() {
+    return {
+      title: "Tobacco Use Amongst Adults in the United States",
+      labels: ['Smokeless Tobacco Use', 'Cigarette Use', 'Cessation', 'E-Cigarette Use'],
+      datasets: [
+        {
+          label: "Tobacco Use in Adults",
+          data: [],
+          backgroundColor: "rgba(54, 162, 235, 0.4)",
+        },
+      ],
+    };
+  }
+
+
+
+
+
+
+    componentDidUpdate() {
+      console.log(this.state)
+    }
+
+
+
+  // componentDidMount = async () => {
+  //   // custom axios uses env specific base path
+  //   // LOCAL_API="http://localhost:4000"
+  //   // REACT_APP_API_URL="http://api.abovecurve.com" (production)
+  //   // REACT_APP_API_URL="http://api.abovecurve.dev" (development)
+
+  //   // Call the custom axios using the below example
+  //   const { data } = await fetchData("/ping");
+  //   this.setState({ data });
+
+  //   // Google Analytics initialization
+  //   initGA(GATRACKING);
+  //   // Trigger a Google Analytics Page View for this page (app.js)
+  //   PageView();
+  // };
+
+
+  componentDidMount() {
+    axios
+      .get(`https://chronicdata.cdc.gov/resource/hn4x-zwk7.json?$limit=10000`)
+      .then((res) => {
+        const obesityObj = this.getSkeletonChartData();
+        const stateObesityObj = {};
+        res.data.forEach((elem) => {
+          if (
+            elem.total &&
+            elem.question ===
+              "Percent of adults aged 18 years and older who have obesity" &&
+            elem.yearstart === "2018" &&
+            elem.locationabbr !=="VI" &&
+            elem.locationabbr !=="GU" &&
+            elem.locationabbr !=="US" 
+          ) {
+            obesityObj.labels.push(elem.locationdesc);
+            obesityObj.datasets[0].data.push(elem.data_value);
+            stateObesityObj[elem.locationabbr] = {
+              abbr: elem.locationabbr,
+              percentage: elem.data_value,
+              stateName: elem.locationdesc
+            }
+          }
+        });
+        this.setState({ obesityData: obesityObj , allObesityData: stateObesityObj});
+        console.log(obesityObj);
+      });
+    }
 
   render() {
     return (
       <>
-        <ChartWrapper />
-        <div className="App">
-          <header className="App-header">
-            <p>Welcome to Above Curve!</p>
-            {/* Below line proves that the client talks to the api */}
-            {/* Should output: Hello from the Above Curve API! */}
-            {this.state.data.message}
-
-            {/* This is how to call a custom Google Analytics event */}
-            {/* This button sends a "TEST" event to GA when the button is clicked */}
-            <button
-              onClick={() => {
-                Event(
-                  "TEST",
-                  "Someone clicked on the Google Analytics test button.",
-                  "LANDING_PAGE"
-                );
-                console.log("clicked!");
-              }}
-            >
-              Test Google Analytics event tracking.
-            </button>
-          </header>
-        </div>
-        {/* <BarChart data={[5,10,undefined,1,3]} size={[500,500]} /> */}
+      <Grid container>
+        <Grid item>
+          <ObesityChart chartData={this.state.obesityData}/>
+        <ChartWrapper chartData= {this.state.singleStateData} selectedState={this.state.selectedObesityState} setSelectObesityState={this.selectObesityState}/>
         <DeathBySexState/>
+        </Grid>
+      </Grid>
     </>
     );
   }

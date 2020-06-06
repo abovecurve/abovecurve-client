@@ -5,7 +5,7 @@ import Chart from "./Chart";
 
 export default class DeathBySexState extends React.Component {
   state = {
-    deathBySexState: [],
+    // deathBySexState: [],
     sexBarData: {
       labels: [],
       datasets: [
@@ -27,16 +27,6 @@ export default class DeathBySexState extends React.Component {
     axios
       .get(`https://data.cdc.gov/resource/9bhg-hcku.json?$limit=10000`)
       .then((res) => {
-        //const deathBySexStateUnfiltered = res.data;
-
-        //console.log(res.data);
-
-        // const deathBySexState = deathBySexStateUnfiltered.filter(
-        //   (elem) => elem.sex === "Female Total" || elem.sex === "Male Total"
-        // );
-
-        // const femaleDeaths = deathBySexState.filter(elem => elem.sex === "Female Total");
-        // const maleDeaths = deathBySexState.filter(elem => elem.sex === "Male Total");
         const deathByStateObj = {};
 
         res.data.forEach((elem) => {
@@ -44,14 +34,13 @@ export default class DeathBySexState extends React.Component {
             (elem.sex === "Female Total" || elem.sex === "Male Total") &&
             !elem.state.includes("United States")
           ) {
-            //console.log(elem)
             deathByStateObj[elem.state] = {
               ...deathByStateObj[elem.state],
               [elem.sex.replace(" Total", "")]: elem,
             };
           }
         });
-        console.log(deathByStateObj);
+        //console.log("DBSO" , deathByStateObj);
         const chartData = Object.keys(deathByStateObj).reduce(
           (obj, key) => {
             obj.labels.push(key);
@@ -69,10 +58,8 @@ export default class DeathBySexState extends React.Component {
             ...this.state.sexBarData
           }
         );
+        console.log("DBSO" , chartData);
         this.setState({ sexBarData: chartData });
-
-        //console.log(deathBySexState);
-        //console.log(chartData);
       });
   }
 
@@ -107,13 +94,13 @@ export default class DeathBySexState extends React.Component {
           }}
           data={this.state.sexBarData}
         />
-        <ul>
+        {/* <ul>
           {this.state.deathBySexState.map((uSState) => (
             <li>
               {uSState.state} {uSState.covid_19_deaths} {uSState.sex}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </>
     );
   }

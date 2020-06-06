@@ -19,7 +19,7 @@ export default class GeoChart extends React.Component {
         options={{
           region: "US",
           resolution: "provinces",
-          colorAxis: { colors: ["#ccc0c0", "#db5e5e", "#6b0707"] },
+          colorAxis: this.props.colorAxis,
           enableRegionInteractivity: true,
         }}
         // Note: you will need to get a mapsApiKey for your project.
