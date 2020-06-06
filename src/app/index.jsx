@@ -8,6 +8,7 @@ import { actionsTest } from "../actions";
 
 import Chart from "../components/chart";
 import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 // NOTE: "UA-164204874-2" Is the tracking ID for Above Curve lcoalhost
 // open this app in incognito for it to register in the GA dashboard
@@ -46,6 +47,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Chart />
+        <Footer />
       </div>
     );
   }
