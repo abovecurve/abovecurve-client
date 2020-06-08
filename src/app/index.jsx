@@ -2,15 +2,11 @@ import React, { Component } from "react";
 import { PageView, initGA, Event } from "../tracking";
 import { fetchData } from "../utils/axios";
 import DeathBySexState from "./visualization/DeathBySexState"
-import BarChart from "./visualization/BarChart";
 import "./app.css";
-import GeoChart from './visualization/GeoChart';
 import ChartWrapper from './visualization/ChartWrapper';
 import ObesityChart from './visualization/ObesityChart';
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
-import DeathByAgeGroup from './visualization/DeathByAgeGroup';
-
 
 
 // NOTE: "UA-164204874-2" Is the tracking ID for Above Curve lcoalhost
@@ -27,9 +23,14 @@ const GATRACKING = process.env.REACT_APP_GATRACKING || "UA-164204874-2";
 class App extends Component {
   state = {
     data: {},
+    selectedState: "",
+    singleObesityChartData: this.getSkeletonObesityChartData(),
+
+
+
     selectedObesityState: "",
-    obesityData: this.getSkeletonChartData(),
-    singleStateData: this.getSkeletonChartData(),
+    obesityData: this.getSkeletonObesityChartData(),
+    singleStateData: this.getSkeletonObesityChartData(),
     allObesityData: {},
 
     selectedSmokingState: "",
@@ -40,8 +41,7 @@ class App extends Component {
 
   selectObesityState = (state) => {
     const selectedState = this.state.allObesityData[state];
-    const singleStateData = this.getSkeletonChartData();
-    console.log(state)
+    const singleStateData = this.getSkeletonObesityChartData();
     singleStateData.labels.push(selectedState.stateName)
     singleStateData.datasets[0].data.push(selectedState.percentage)
 
@@ -49,7 +49,21 @@ class App extends Component {
 
   }
 
-  getSkeletonChartData() {
+  masterSelectState = (state) => {
+    const obesityData = this.state.allObesityData[state];
+    //do this for other charts ^^
+
+    //const smokingData = this.state.allSmokingDate[state];
+    //const ageData = this.state.allAgeData[state];
+    const singleObesityChartData = this.getSkeletonObesityChartData();
+    singleObesityChartData.labels.push(obesityData.stateName)
+    singleObesityChartData.datasets[0].data.push(obesityData.percentage)
+
+    this.setState ({ selectedState: state , singleObesityChartData: singleObesityChartData}) 
+  }
+
+
+  getSkeletonObesityChartData() {
     return {
       labels: [],
       datasets: [
@@ -65,7 +79,6 @@ class App extends Component {
   selectSmokingState = (state) => {
     const selectedState = this.state.allSmokingData[state];
     const singleSmokingStateData = this.getSkeletonPieData();
-    // console.log(state)
     singleSmokingStateData.labels.push(selectedState.stateName)
     singleSmokingStateData.datasets[0].data.push(selectedState.percentage)
 
@@ -86,16 +99,9 @@ class App extends Component {
     };
   }
 
-
-
-
-
-
     componentDidUpdate() {
       console.log(this.state)
     }
-
-
 
   // componentDidMount = async () => {
   //   // custom axios uses env specific base path
@@ -118,7 +124,7 @@ class App extends Component {
     axios
       .get(`https://chronicdata.cdc.gov/resource/hn4x-zwk7.json?$limit=10000`)
       .then((res) => {
-        const obesityObj = this.getSkeletonChartData();
+        const obesityObj = this.getSkeletonObesityChartData();
         const stateObesityObj = {};
         res.data.forEach((elem) => {
           if (
@@ -150,7 +156,7 @@ class App extends Component {
       <Grid container>
         <Grid item>
           <ObesityChart chartData={this.state.obesityData}/>
-        <ChartWrapper chartData= {this.state.singleStateData} selectedState={this.state.selectedObesityState} setSelectObesityState={this.selectObesityState}/>
+        <ChartWrapper obesityChartData= {this.state.singleObesityChartData} setMasterSelectState={this.masterSelectState}/>
         <DeathBySexState/>
         </Grid>
       </Grid>

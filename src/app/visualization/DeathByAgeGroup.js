@@ -1,7 +1,6 @@
 import StateAbr from "../../utils/StateAbr.json";
 import React from "react";
 import axios from "axios";
-// import BarChart from "./BarChart";
 import Chart from "./Chart";
 
 export default class DeathByAgeGroup extends React.Component {
@@ -47,7 +46,6 @@ export default class DeathByAgeGroup extends React.Component {
         //const deathByAgeStateObj = { ...deathByAgeObj }
         this.setState({ masterDeathArray: res.data });
 
-        console.log("Data", res.data);
         res.data.forEach((elem) => {
           if (
             elem.state.toLowerCase() === "united states" &&
@@ -55,18 +53,16 @@ export default class DeathByAgeGroup extends React.Component {
           ) {
             deathByAgeObj.labels.push(elem.age_group);
             deathByAgeObj.datasets[0].data.push(elem.covid_19_deaths);
-            console.log(elem.state.toLowerCase());
           }
         });
-        console.log("Obj", deathByAgeObj);
         this.setState({ deathData: deathByAgeObj, chartData: deathByAgeObj });
       });
   }
 
   componentDidUpdate(prevProps) {
-    console.log("Props", prevProps, this.props);
-    console.log(this.state.chartData);
-    console.log(this.state.masterDeathArray);
+    // console.log("Props", prevProps, this.props);
+    // console.log(this.state.chartData);
+    // console.log(this.state.masterDeathArray);
     if (
       this.props.selectedLocation === null ||
       this.props.selectedLocation[0] === prevProps.selectedLocation[0]
@@ -91,7 +87,6 @@ export default class DeathByAgeGroup extends React.Component {
     const ageGroupDeathObj = {};
 
     this.state.masterDeathArray.forEach((elem) => {
-      //console.log(elem.sex.toLowerCase());
       if (
         elem.state.toLowerCase() ===
         StateAbr[this.props.selectedLocation[0]].toLowerCase()
@@ -114,7 +109,6 @@ export default class DeathByAgeGroup extends React.Component {
       }
       }
     });
-    console.log(ageGroupDeathObj)
     const chartData = Object.keys(ageGroupDeathObj).reduce(
       (obj, key) => {
         obj.labels.push(key);
@@ -124,9 +118,7 @@ export default class DeathByAgeGroup extends React.Component {
       },
       deathByAgeObj
     )
-      console.log(chartData)
     this.setState({ chartData: chartData });
-    //console.log(deathByAgeObj);
   }
 
   render() {

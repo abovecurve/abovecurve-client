@@ -40,7 +40,6 @@ export default class DeathBySexState extends React.Component {
             };
           }
         });
-        //console.log("DBSO" , deathByStateObj);
         const chartData = Object.keys(deathByStateObj).reduce(
           (obj, key) => {
             obj.labels.push(key);
@@ -94,13 +93,6 @@ export default class DeathBySexState extends React.Component {
           }}
           data={this.state.sexBarData}
         />
-        {/* <ul>
-          {this.state.deathBySexState.map((uSState) => (
-            <li>
-              {uSState.state} {uSState.covid_19_deaths} {uSState.sex}
-            </li>
-          ))}
-        </ul> */}
       </>
     );
   }

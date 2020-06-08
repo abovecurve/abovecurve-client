@@ -2,7 +2,6 @@ import React from "react";
 import GeoChart from "./GeoChart";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
-//import CircularProgress from "@material-ui/core/CircularProgress";
 import ObesityChart from "./ObesityChart";
 import DeathByAgeGroup from "./DeathByAgeGroup";
 
@@ -20,7 +19,7 @@ export default class ChartWrapper extends React.Component {
     axios
       .get(`https://covidtracking.com/api/v1/states/current.json`)
       .then((res) => {
-        console.log(res.data)
+        //console.log(res.data);
         this.extractData(res.data);
         this.extractTotalData(res.data);
         this.extractDeathData(res.data);
@@ -61,8 +60,7 @@ export default class ChartWrapper extends React.Component {
     const selection = chart.getSelection();
     if (!selection.length) return;
     const stateData = this.state.mapData[selection[0].row + 1];
-    this.setState({ selectedLocation: stateData })
-    console.log(stateData)
+    this.setState({ selectedLocation: stateData });
   };
 
   selectObesityState = ({ chartWrapper }) => {
@@ -71,10 +69,9 @@ export default class ChartWrapper extends React.Component {
     if (!selection.length) return;
     const stateData = this.state.mapData[selection[0].row + 1];
     this.props.setSelectObesityState(stateData[0]);
-
   };
 
-   selectSmokingState = ({ chartWrapper }) => {
+  selectSmokingState = ({ chartWrapper }) => {
     const chart = chartWrapper.getChart();
     const selection = chart.getSelection();
     if (!selection.length) return;
@@ -82,23 +79,30 @@ export default class ChartWrapper extends React.Component {
     this.props.setSelectSmokingState(stateData[0]);
   };
 
+  masterSelectState = ({ chartWrapper }) => {
+    const chart = chartWrapper.getChart();
+    const selection = chart.getSelection();
+    if (!selection.length) return;
+    const stateData = this.state.mapData[selection[0].row + 1];
+    this.props.setMasterSelectState(stateData[0]);
+  };
+
   render() {
     return (
       <>
         <Grid container>
           <Grid item xs={12} sm={12} md={12} lg={6}>
-            <DeathByAgeGroup selectedLocation={this.state.selectedLocation}/>
+            <DeathByAgeGroup selectedLocation={this.state.selectedLocation} />
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={6}>
             <GeoChart
-              selectState={this.selectObesityState}
+              selectState={this.masterSelectState}
               mapData={this.state.mapData}
               colorAxis={{ colors: ["#FFEDEB", "#db5e5e", "#6b0707"] }}
             />
 
             <Grid item xs={12} sm={12} md={12} lg={6}>
-              <ObesityChart chartData={this.props.chartData} />
-              <ObesityChart chartData={this.props.chartData} />
+              <ObesityChart chartData={this.props.obesityChartData} />
             </Grid>
           </Grid>
 
