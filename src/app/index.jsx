@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid";
 // NOTE: "UA-164204874-2" Is the tracking ID for Above Curve lcoalhost
 // open this app in incognito for it to register in the GA dashboard
 // when testing locally.
-const GATRACKING = process.env.REACT_APP_GATRACKING || "UA-164204874-2";
+//const GATRACKING = process.env.REACT_APP_GATRACKING || "UA-164204874-2";
 
 /* 
   When using React Router see this guide for
