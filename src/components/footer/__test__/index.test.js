@@ -19,4 +19,10 @@ describe("Footer Component", () => {
     const logo = component.getAllByTestId("ac-logo");
     expect(logo.length).toBe(1);
   });
+  
+  it("should link to the home page", () => {
+    const logo = component.getAllByTestId("ac-footer-logo");
+    expect(logo).toHaveAttribute('href', '/');
+  });
 });
+
