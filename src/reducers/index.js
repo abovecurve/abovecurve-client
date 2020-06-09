@@ -3,6 +3,7 @@ import { types } from "../actions";
 export const initialState = {
   testPassed: false,
   menuOpen: false,
+  allDatasets: ["Number of cases", "Number of Deaths", "Number of Recovered"],
 };
 
 export function reducer(state = initialState, action) {

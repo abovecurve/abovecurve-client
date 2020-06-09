@@ -1,9 +1,13 @@
 import React from "react";
 import Navbar from "../index";
+import MapMenu from "../../mapMenu";
 import { render, cleanup, fireEvent } from "../../../utils/test-utils";
+import { initialState } from "../../../reducers";
 
 const setUp = (props = {}) => {
-  const component = render(<Navbar {...props} />);
+  const component = render(<Navbar {...props} />, {
+    initialState,
+  });
   return component;
 };
 
@@ -26,8 +30,12 @@ describe("Navbar Component", () => {
   });
 
   describe("Menu button", () => {
-    it("should change the props.menuOpen value when clicked", () => {
+    it("should display an x if the menu is open", () => {
       const menuBtn = component.getAllByLabelText("Menu")[0];
+
+      fireEvent.click(menuBtn);
+
+      expect(component.getAllByTestId("xBtn").length).toBe(1);
     });
   });
 });
