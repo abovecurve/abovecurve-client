@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import Chart from "./Chart";
 
 export default class ObesityChart extends React.Component {

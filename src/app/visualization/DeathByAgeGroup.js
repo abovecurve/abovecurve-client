@@ -80,7 +80,7 @@ export default class DeathByAgeGroup extends React.Component {
         {
           label: ["Female"],
           data: [],
-          backgroundColor: "rgba(0, 255, 0, 0.4)",
+          backgroundColor: "rgba(255, 99, 132, 0.4)",
         },
       ],
     };
@@ -109,6 +109,7 @@ export default class DeathByAgeGroup extends React.Component {
       }
       }
     });
+    console.log(ageGroupDeathObj)
     const chartData = Object.keys(ageGroupDeathObj).reduce(
       (obj, key) => {
         obj.labels.push(key);
@@ -118,6 +119,7 @@ export default class DeathByAgeGroup extends React.Component {
       },
       deathByAgeObj
     )
+    console.log(chartData)
     this.setState({ chartData: chartData });
   }
 

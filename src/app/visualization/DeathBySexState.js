@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-// import BarChart from "./BarChart";
 import Chart from "./Chart";
 
 export default class DeathBySexState extends React.Component {

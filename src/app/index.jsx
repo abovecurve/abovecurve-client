@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { PageView, initGA, Event } from "../tracking";
-import { fetchData } from "../utils/axios";
 import DeathBySexState from "./visualization/DeathBySexState"
 import "./app.css";
 import ChartWrapper from './visualization/ChartWrapper';
 import ObesityChart from './visualization/ObesityChart';
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
-
 
 // NOTE: "UA-164204874-2" Is the tracking ID for Above Curve lcoalhost
 // open this app in incognito for it to register in the GA dashboard
