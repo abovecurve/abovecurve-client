@@ -20,9 +20,15 @@ let Navbar = (props) => {
         role="button"
         onClick={menuButtonClicked}
       >
-        <div className={styles.line} />
-        <div className={styles.line} />
-        <div className={styles.line} />
+        {!props.menuOpen ? (
+          <>
+            <div className={styles.line} />
+            <div className={styles.line} />
+            <div className={styles.line} />
+          </>
+        ) : (
+          <div className={styles.x} data-testid="xBtn" />
+        )}
       </div>
     </nav>
   );

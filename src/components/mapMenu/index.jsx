@@ -11,7 +11,19 @@ let MapMenu = (props) => {
 
   return (
     <div className={styles.MapMenu} data-testid="MapMenu">
-      Map Menu
+      <h2>DATASETS</h2>
+      <form className={styles.datasets_form}>
+        {props.allDatasets &&
+          props.allDatasets.map((ph, index) => {
+            return (
+              <label className={styles.datasets_label} key={index}>
+                <input type="checkbox" name={index + "_" + ph} id={index} />
+                <div className={styles.datasets_styledCheckbox} />
+                {ph}
+              </label>
+            );
+          })}
+      </form>
     </div>
   );
 };
@@ -23,6 +35,7 @@ MapMenu.propTypes = {
 const mapStateToProps = (state) => {
   return {
     menuOpen: state.menuOpen,
+    allDatasets: state.allDatasets,
   };
 };
 
