@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <BottomNavigation className={styles.Footer} showLabels>
-      <BottomNavigationAction href="/" alt="Above Curve Homepage" icon={<img src={logo} alt="Above Curve" data-testid="ac-logo"></img>} />
+      <BottomNavigationAction href="/" alt="Above Curve Homepage" icon={<img src={logo} alt="Above Curve" data-testid="ac-footer-logo"></img>} />
     </BottomNavigation>
   );
 }
