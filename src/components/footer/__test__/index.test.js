@@ -16,7 +16,7 @@ describe("Footer Component", () => {
   afterEach(cleanup);
 
   it("should render the ac-logo without error", () => {
-    const logo = component.getAllByTestId("ac-logo");
+    const logo = component.getAllByTestId("ac-footer-logo");
     expect(logo.length).toBe(1);
   });
   
