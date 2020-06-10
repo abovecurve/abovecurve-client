@@ -1,0 +1,12 @@
+@import "../../utils/styles/index.scss";
+
+.Footer {
+  height: 10vh;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 2;
+  box-shadow: 0 2px 12px 6px rgba(0, 0, 0, 0.1);
+
+}

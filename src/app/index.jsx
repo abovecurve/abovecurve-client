@@ -14,6 +14,7 @@ import Register from "../components/register";
 import Login from "../components/login";
 import PrivateRoute from "../components/privateRoute";
 import Dashboard from "../components/dashboard";
+import Footer from "../components/footer";
 
 // NOTE: "UA-164204874-2" Is the tracking ID for Above Curve lcoalhost
 // open this app in incognito for it to register in the GA dashboard
@@ -59,6 +60,7 @@ class App extends Component {
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
           <Chart />
+          <Footer />
         </div>
       </Router>
     );
