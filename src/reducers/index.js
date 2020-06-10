@@ -1,4 +1,7 @@
 import { types } from "../actions";
+import { combineReducers } from "redux";
+import authReducer from "./authReducers";
+import errorReducer from "./errorReducers";
 
 export const initialState = {
   testPassed: false,
@@ -18,3 +21,8 @@ export function reducer(state = initialState, action) {
       return state;
   }
 }
+
+export default combineReducers({
+  auth: authReducer,
+  errors: errorReducer,
+});

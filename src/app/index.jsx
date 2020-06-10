@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { PageView, initGA } from "../tracking";
 import { fetchData } from "../utils/axios";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./app.css";
 
 import { connect } from "react-redux";
@@ -8,6 +9,11 @@ import { actionsTest } from "../actions";
 
 import Chart from "../components/chart";
 import Navbar from "../components/navbar";
+import Landing from "../components/landing";
+import Register from "../components/register";
+import Login from "../components/login";
+import PrivateRoute from "../components/privateRoute";
+import Dashboard from "../components/dashboard";
 import Footer from "../components/footer";
 
 // NOTE: "UA-164204874-2" Is the tracking ID for Above Curve lcoalhost
@@ -44,11 +50,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Navbar />
-        <Chart />
-        <Footer />
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Switch>
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          </Switch>
+          <Chart />
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }
