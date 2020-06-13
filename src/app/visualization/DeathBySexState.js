@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
-import Chart from "./Chart";
+import Chart from "./BarChart";
 
 export default class DeathBySexState extends React.Component {
   state = {
-    // deathBySexState: [],
+     deathBySexState: [],
     sexBarData: {
       labels: [],
       datasets: [
@@ -26,19 +26,22 @@ export default class DeathBySexState extends React.Component {
     axios
       .get(`https://data.cdc.gov/resource/9bhg-hcku.json?$limit=10000`)
       .then((res) => {
+        console.log(res)
         const deathByStateObj = {};
 
         res.data.forEach((elem) => {
           if (
-            (elem.sex === "Female Total" || elem.sex === "Male Total") &&
+            (elem.sex === "Female" || elem.sex === "Male") && (elem.age_group === "All ages") &&
             !elem.state.includes("United States")
           ) {
+            console.log(elem.sex)
             deathByStateObj[elem.state] = {
               ...deathByStateObj[elem.state],
               [elem.sex.replace(" Total", "")]: elem,
             };
           }
         });
+        console.log("DBSO" , deathByStateObj);
         const chartData = Object.keys(deathByStateObj).reduce(
           (obj, key) => {
             obj.labels.push(key);
@@ -92,6 +95,7 @@ export default class DeathBySexState extends React.Component {
           }}
           data={this.state.sexBarData}
         />
+
       </>
     );
   }

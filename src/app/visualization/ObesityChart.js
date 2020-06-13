@@ -1,5 +1,5 @@
 import React from "react";
-import Chart from "./Chart";
+import Chart from "./BarChart";
 
 export default class ObesityChart extends React.Component {
   render() {

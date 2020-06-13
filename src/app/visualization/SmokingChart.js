@@ -4,6 +4,7 @@ import PieChart from "./PieChart";
 
 export default class SmokingChart extends React.Component {
     render() {
+        //console.log(this.props.pieChartData)
         return (
             <PieChart
                 width={100}

@@ -9,7 +9,7 @@ export default class PieChart extends React.Component {
     }
    
     componentDidMount() {
-      console.log(this.chartRef); // returns a Chart.js instance reference
+      //console.log(this.chartRef); // returns a Chart.js instance reference
       
     }
     

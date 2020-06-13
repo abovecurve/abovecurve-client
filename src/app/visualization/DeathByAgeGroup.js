@@ -1,7 +1,7 @@
 import StateAbr from "../../utils/StateAbr.json";
 import React from "react";
 import axios from "axios";
-import Chart from "./Chart";
+import Chart from "./BarChart";
 
 export default class DeathByAgeGroup extends React.Component {
   state = {
@@ -110,7 +110,19 @@ export default class DeathByAgeGroup extends React.Component {
       }
     });
     console.log(ageGroupDeathObj)
-    const chartData = Object.keys(ageGroupDeathObj).reduce(
+    const orderedAgeGroupKeys = Object.keys(ageGroupDeathObj).sort((a, b) => {
+      const aInt = parseInt(a.split("-")[0])
+      const bInt = parseInt(b.split("-")[0])
+      if (isNaN(aInt)) {
+        return -1;
+      }
+      if (isNaN(bInt)) {
+        return 1;
+      }
+      return aInt - bInt;
+    } )
+    console.log(orderedAgeGroupKeys)
+    const chartData = orderedAgeGroupKeys.reduce(
       (obj, key) => {
         obj.labels.push(key);
         obj.datasets[0].data.push(ageGroupDeathObj[key].male || 0);
