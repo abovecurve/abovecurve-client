@@ -157,7 +157,7 @@ class App extends Component {
     data
       .filter(
         (elem) =>
-          elem.locationabbr == state &&
+          elem.locationabbr === state &&
           (elem.measuredesc ===
             "Percent of Former Smokers Among Ever Smokers" ||
             elem.measuredesc === "Current Use" ||
