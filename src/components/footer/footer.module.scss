@@ -8,5 +8,6 @@
   align-items: center;
   z-index: 2;
   box-shadow: 0 2px 12px 6px rgba(0, 0, 0, 0.1);
-
+  // needed only until BottomNavigation is reimplemented in footer
+  justify-content: center;
 }
