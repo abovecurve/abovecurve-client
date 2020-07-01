@@ -1,13 +1,23 @@
 import React, { useEffect } from "react";
 import styles from "./map.module.scss";
+import { connect } from "react-redux";
+
+import { actionsSetState } from "../../actions";
 import { ReactComponent as USMapSVG } from "./assets/US_map-01.svg";
 
-const Map = (props) => {
+let Map = (props) => {
   useEffect(() => {
     let map = document.getElementsByTagName("svg");
     let paths = map[0].querySelectorAll("path");
 
     for (let key of paths.keys()) {
+      //adds listener to click even on each path and sets selectedState
+      if (paths[key].children.length > 0) {
+        let state = paths[key];
+        state.addEventListener("click", () => {
+          return props.dispatchSetState(paths[key].children[0].innerHTML);
+        });
+      }
       let bbox = paths[key].getBBox();
 
       let center = {
@@ -16,7 +26,7 @@ const Map = (props) => {
       };
 
       // changes dynamically based on data provided by dataset
-      let size = 10;
+      let size = 1;
 
       let svgns = "http://www.w3.org/2000/svg";
       let dot = document.createElementNS(svgns, "circle");
@@ -44,4 +54,12 @@ const Map = (props) => {
   );
 };
 
-export default Map;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatchSetState: (state) => {
+      return dispatch(actionsSetState(state));
+    },
+  };
+};
+
+export default Map = connect(null, mapDispatchToProps)(Map);

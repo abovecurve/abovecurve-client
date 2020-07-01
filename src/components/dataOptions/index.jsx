@@ -4,11 +4,13 @@ import { PropTypes } from "prop-types";
 
 import Map from "../map";
 import MapMenu from "../mapMenu";
+import OtherCharts from "../otherCharts";
 
 const DataOptions = (props) => {
   return (
     <div className={styles.DataOptions}>
       <Map />
+      <OtherCharts />
       <MapMenu datasets={props.datasets} />
     </div>
   );

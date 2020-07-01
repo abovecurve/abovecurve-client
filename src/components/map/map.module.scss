@@ -13,11 +13,7 @@
   .US_map {
     width: 100%;
     height: auto;
-
-    @include lg {
-      height: 100%;
-      width: auto;
-    }
+    max-height: 100%;
 
     path {
       &:not(#frame) {
